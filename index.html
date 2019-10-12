@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+
+  <title>Test DB</title>
+  <meta charset="utf-8">
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+
+  #items img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  .item {
+    margin: 1%;
+  }
+
+  .item:hover {
+    background: #eee;
+  }
+
+  [selected=true] {
+    background: #aaa;
+  }
+
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <header class="header">
+
+  </header>
+
+  <main class="main">
+    <div id="items">
+
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-success" id="submit">Отправить</button>
+
+    </div>
+  </main>
+
+
+  <footer class="footer">
+
+  </footer>
+
+  <script type="text/javascript" src="test.json"></script>
+  <script type="text/javascript">
+  var items = $("#items");
+
+  for (var i = 0; i < data.length; i++)
+  {
+    var item = document.createElement('div');
+    item.classList = "item";
+    item.id = data[i].id;
+
+    var child = document.createElement('div');
+    child.innerHTML = "<div class='row'><div class='col-md-4'>"+data[i].id+"</div><div class='col-md-4'><img src='"+data[i].url+"' alt=''></div><div class='col-md-4'>"+data[i].name+"</div></div>";
+
+    item.append(child);
+
+    items.append(item);
+
+  }
+
+  $(".item").click(function () {
+    // alert(this.id);
+    var selected = $("#"+this.id);
+    this.setAttribute("selected", 'true');
+  });
+
+  $("#submit").click(function () {
+    var selected = $('[selected=true]');
+    for (var i = 0; i < selected.length; i++) {
+      alert(selected[i].id)
+
+    }
+
+  });
+  </script>
+</body>
+
+</html>
